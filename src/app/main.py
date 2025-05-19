@@ -1,43 +1,33 @@
-from typing import Any  # ✅ Fixes the error
+"""Main entry point for the stock-quant-arbitrage module.
+
+This script initializes the arbitrage detection service,
+sets up logging, and begins consuming market data from the
+configured message queue for arbitrage signal generation.
+"""
+
+import os
+import sys
+
+# Add 'src/' to Python's module search path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from app.logger import setup_logger
+from app.queue_handler import consume_messages
+
+# Initialize logger
+logger = setup_logger(__name__)
 
 
-def add_numbers(a: int | float, b: int | float) -> int | float:
-    """Adds two numbers and returns the result.
+def main() -> None:
+    """Starts the arbitrage detection service.
 
-    Args:
-      a(Union[int): The first number.
-      b(Union[int): The second number.
-      a: int | float:
-      b: int | float:
-      a: int | float:
-      b: int | float:
-
-    Returns:
-      Union[int, float]: The sum of the two numbers.
-
+    This service listens to incoming market data from RabbitMQ or SQS,
+    performs statistical or price-based arbitrage detection,
+    and publishes signals when opportunities are found.
     """
-    return a + b
+    logger.info("🚀 Starting Arbitrage Detection Service...")
+    consume_messages()
 
 
-class ExampleClass:
-    """A simple example class."""
-
-    def __init__(self, value: Any):
-        """Initializes ExampleClass.
-
-        Args:
-            value (Any): The value to store.
-
-        """
-        self.value = value
-
-    def get_value(self) -> Any:
-        """Retrieve the value assigned to the object.
-
-        Args:
-
-        Returns:
-          Any: The stored value.
-
-        """
-        return self.value
+if __name__ == "__main__":
+    main()
