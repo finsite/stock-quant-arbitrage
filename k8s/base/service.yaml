@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stock-quant-arbitrage
+spec:
+  type: ClusterIP
+  selector:
+    app: stock-quant-arbitrage
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080

@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stock-quant-arbitrage
+  labels:
+    app: stock-quant-arbitrage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stock-quant-arbitrage
+  template:
+    metadata:
+      labels:
+        app: stock-quant-arbitrage
+    spec:
+      containers:
+        - name: stock-quant-arbitrage
+          image: stock-quant-arbitrage:latest
+          ports:
+            - containerPort: 8080
