@@ -1,132 +1,137 @@
-Perfect — here’s the regenerated and expanded `TODO.md` for
-`stock-quant-arbitrage`, now reflecting the extended engine logic and **future
-enhancements** you may want to explore later.
+# 📌 Project TODO: Stock-\* Poller & Analysis Engine
+
+This TODO list outlines the remaining work to finalize the `stock-*`
+repositories, ensuring all pollers and processors are production-grade,
+consistent, and maintainable.
 
 ---
 
-### ✅ `TODO.md` — `stock-quant-arbitrage`
+## ✅ Core Functionality
 
-```markdown
-# 🧠 TODO – stock-quant-arbitrage
-
-This module detects arbitrage opportunities between correlated instruments using
-spread-based and statistical methods. It consumes market data via RabbitMQ or
-SQS and emits actionable signals for downstream systems.
-
----
-
-## 📦 Core Features
-
-- [x] Vault-integrated configuration (`config.py`)
-- [x] Message consumption from RabbitMQ or SQS
-- [x] Rule-based and statistical arbitrage engine (`arbitrage_engine.py`)
-- [x] Confidence scoring using z-score logic
-- [x] Signal output via queue publisher (`queue_sender.py`)
-- [x] Logging, exception handling, and retry-ready
+- [ ] Ensure poller loads:
+  - [ ] Symbols from configuration
+  - [ ] API keys from Vault or environment
+  - [ ] Correct poller/processor module for the strategy
+- [ ] Add CLI flags or health check endpoints
+- [ ] Add dry-run/test mode for output verification
 
 ---
 
-## 🛠️ Implementation Tasks
+## 🔐 Vault Integration
 
-### ⬜ Engine Enhancements
+- [ ] Auto-initialize Vault secrets in dev/staging
+- [ ] One policy per poller/processor
+- [ ] Vault fallback to env vars (with warnings)
+- [ ] Log all failed or missing Vault lookups
 
-- [x] Z-score based mean reversion detection
-- [x] Absolute spread threshold detection
-- [x] Configurable lookback and thresholds
-- [ ] Add support for multi-pair or batched analysis
-- [ ] Add cross-instrument normalization (e.g., percent spread or log spread)
-- [ ] Add `confidence` weighting factors to output schema
-- [ ] Refactor engine for plug-and-play strategy modules
+---
 
-### ⬜ Input Handling
+## 📨 Messaging (RabbitMQ / SQS)
 
-- [x] `queue_handler.py` integration
-- [ ] Retry mechanism for transient errors (e.g., DLQ support)
-- [ ] Batch polling or streaming input mode (optional)
+- [ ] Ensure all pollers:
+  - [ ] Use `queue_sender.py` + `queue_handler.py`
+  - [ ] Use `get_queue_type()` and RabbitMQ/SQS fallback logic
+- [ ] Add retry logic + exponential backoff
+- [ ] Add metrics for:
+  - [ ] Publish latency
+  - [ ] Queue delivery success/fail
+- [ ] Validate metrics hooks (`track_polling_metrics`, `track_request_metrics`)
 
-### ⬜ Output Handling
+---
 
-- [x] Forward signals to downstream via RabbitMQ/SQS
-- [ ] Write signals to a backing store (PostgreSQL, DynamoDB, S3)
-- [ ] Forward high-confidence signals to notification or trade execution service
+## ⚙️ Configuration Standardization
+
+- [ ] Use `config.py` in all repos with:
+  - [ ] `get_polling_interval()`
+  - [ ] `get_batch_size()`
+  - [ ] `get_rabbitmq_queue()` and routing helpers
+- [ ] Log missing or defaulted config keys
+- [ ] Validate config with test runner
+- [ ] Support JSON/INI overrides optionally
 
 ---
 
 ## 🧪 Testing & Validation
 
-- [ ] Add unit tests for `arbitrage_engine.py`
-- [ ] Add test harness for input/output queue simulation
-- [ ] Add mock SQS and RabbitMQ fixtures
-- [ ] Add validation for malformed payloads
+- [ ] Test coverage >90%:
+  - [ ] Poller startup + shutdown
+  - [ ] Message parsing
+  - [ ] Vault + config fallbacks
+- [ ] Add `tests/integration/` runner
+- [ ] Mock API calls for:
+  - [ ] Rate limits
+  - [ ] Timeout handling
+  - [ ] Malformed response handling
 
 ---
 
-## 🚀 Deployment & Ops
+## 🧠 Caching & Optimization
 
-- [ ] Create `Dockerfile`
-- [ ] Create `docker-compose.yml` for local queue testbed
-- [ ] Add `Makefile` with common targets (run, test, format)
-- [ ] Optional: Add ArgoCD manifests or Helm chart for Kubernetes deployment
-
----
-
-## 📈 Observability
-
-- [x] Info and debug-level logging
-- [ ] Convert logs to structured JSON for ingestion into ELK/Loki/CloudWatch
-- [ ] Emit basic metrics (signals per hour, error rate, confidence distribution)
-- [ ] Add `/health` check endpoint if converted to API service
+- [ ] Enable LRU caching for symbol configs
+- [ ] Consider Redis or in-memory cache where useful
+- [ ] Use batch API requests where supported
+- [ ] Profile slow pollers (e.g., using `cProfile` or `pyinstrument`)
 
 ---
 
-## 🔐 Security & Compliance
+## 🔊 Logging Enhancements
 
-- [x] Uses Vault for secret management
-- [ ] Validate all loaded Vault keys and fallbacks
-- [ ] IAM roles with read-only secret access
-- [ ] Add SLSA provenance + SBOM via CI/CD
-- [ ] Add `safety`, `bandit`, `checkov` to dev dependencies
-
----
-
-## 📚 Documentation
-
-- [ ] Add usage example to `README.md`
-- [ ] Document input and output JSON payload format
-- [ ] Update `mkdocs.yml` and generate `docs/usage.md`
+- [ ] Add `LOG_LEVEL` via environment
+- [ ] Add structured logging (`loguru`, `structlog`)
+- [ ] Optionally log to file
+- [ ] Validate all logs include symbol, timestamp, and context
 
 ---
 
-## 🧹 Code Quality
+## 📈 Metrics
 
-- [x] Pre-commit hooks configured (`ruff`, `black`, `pyright`)
-- [ ] Add `deptry`, `safety`, `bandit` to `requirements-dev.in`
-- [ ] Enable docstring validation and enforce function typing
-- [ ] Add `check-pyproject` to validate metadata
-
----
-
-## 🧩 Future Enhancements
-
-### 🧪 Advanced Strategy Support
-
-- [ ] Add Engle-Granger cointegration testing
-- [ ] Add Johansen test support for multi-asset analysis
-- [ ] Integrate ML-based arbitrage classifier (e.g., XGBoost, LSTM)
-
-### 💡 Multi-leg Arbitrage
-
-- [ ] Support triangular arbitrage across three instruments
-- [ ] NAV-based arbitrage (ETF/crypto premium detection)
-
-### ⏱️ Real-time Execution
-
-- [ ] Add latency tracking and ingestion delay metrics
-- [ ] Integrate with live WebSocket feeds or FIX gateway
+- [ ] Poller metrics (stdout or Prometheus-ready)
+  - [ ] Request durations
+  - [ ] Queue send latency
+  - [ ] Poll success/failure counts
+- [ ] Standardize:
+  - [ ] `track_polling_metrics()`
+  - [ ] `track_request_metrics()`
 
 ---
 
-_Last updated: {{ date }}_
-```
+## 💬 Slack Integration (Optional)
+
+- [ ] Add Slack notifier module
+- [ ] Send alert on critical failure or threshold
+- [ ] Send daily summary if `ENABLE_SLACK_ALERTS=true`
 
 ---
+
+## 🧹 Code & Repo Hygiene
+
+- [ ] Validate all:
+  - [ ] Type annotations
+  - [ ] Function/class/module docstrings
+- [ ] Remove unused imports
+- [ ] Ensure consistent folder structure (`src/app`)
+- [ ] Lint all code using `ruff`, `black`, `mypy`, `yamlfix`
+
+---
+
+## 🔄 CI/CD + Tooling
+
+- [ ] GitHub Actions:
+  - [ ] Linting (black, ruff, mypy)
+  - [ ] Tests with coverage
+  - [ ] Pre-commit enforcement
+- [ ] Add support for:
+  - [ ] Version bumping via Commitizen
+  - [ ] SBOM and provenance (SLSA, Cosign)
+- [ ] Publish Docker image (optional)
+
+---
+
+## 📝 Documentation
+
+- [ ] Add README badges: build, test, coverage
+- [ ] Expand README with:
+  - [ ] Setup instructions
+  - [ ] Example usage
+- [ ] Add CONTRIBUTING.md
+- [ ] Ensure LICENSE (Apache 2.0 or MIT) exists

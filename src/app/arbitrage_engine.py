@@ -18,9 +18,11 @@ def run_arbitrage_analysis(payload: dict[str, Any]) -> dict[str, Any] | None:
     applies detection logic, and returns a signal if an opportunity is found.
 
     Args:
+    ----
         payload (dict): Market data payload containing symbol, timestamp, price, etc.
 
     Returns:
+    -------
         dict or None: Arbitrage signal payload, or None if no opportunity found.
 
     """
