@@ -7,6 +7,16 @@
 - Initial project structure cloned from template_python
 - Custom configuration and module setup for `stock-quant-arbitrage`
 
+## v0.2.0 (2025-05-23)
+
+### Feat
+
+- **versioning**: enforce version consistency across pyproject.toml, __init__.py, and changelog
+
+### Fix
+
+- **poller**: integrate updates
+
 ## v0.1.0 (2025-05-19)
 
 ### Feat
