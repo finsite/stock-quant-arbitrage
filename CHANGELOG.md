@@ -7,6 +7,12 @@
 - Initial project structure cloned from template_python
 - Custom configuration and module setup for `stock-quant-arbitrage`
 
+## v0.2.1 (2025-06-03)
+
+### Fix
+
+- **files**: Cleanup redundant files and standardize
+
 ## v0.2.0 (2025-05-23)
 
 ### Feat
