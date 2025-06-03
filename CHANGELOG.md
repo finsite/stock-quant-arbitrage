@@ -7,6 +7,13 @@
 - Initial project structure cloned from template_python
 - Custom configuration and module setup for `stock-quant-arbitrage`
 
+## v0.2.3 (2025-06-03)
+
+### Fix
+
+- **deps**: recompile requirements-dev.txt and resolve conflicts
+- **deps**: standardize termcolor to 2.5.0
+
 ## v0.2.2 (2025-06-03)
 
 ### Fix
