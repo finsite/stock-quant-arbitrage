@@ -31,6 +31,7 @@ def main() -> None:
     Returns
     -------
 
+
     """
     logger.info("🚀 Starting Arbitrage Detection Service...")
     consume_messages()

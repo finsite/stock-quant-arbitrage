@@ -21,10 +21,6 @@ def run_arbitrage_analysis(payload: dict[str, Any]) -> dict[str, Any] | None:
     ----
         payload (dict): Market data payload containing symbol, timestamp, price, etc.
 
-    Returns:
-    -------
-        dict or None: Arbitrage signal payload, or None if no opportunity found.
-
     Parameters
     ----------
     payload :
@@ -35,13 +31,16 @@ def run_arbitrage_analysis(payload: dict[str, Any]) -> dict[str, Any] | None:
         param payload: dict[str:
     Any :
 
-    payload: dict[str :
+    payload : dict[str :
 
     Any] :
+
+    payload: dict[str :
 
 
     Returns
     -------
+
 
     """
     symbol_a = payload.get("symbol_a")
