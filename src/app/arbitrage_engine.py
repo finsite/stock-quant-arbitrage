@@ -24,15 +24,12 @@ def run_arbitrage_analysis(payload: dict[str, Any]) -> dict[str, Any] | None:
     :param payload: dict[str:
     :param Any: param payload: dict[str:
     :param Any: param payload: dict[str:
-    :param Any: 
-    :param payload: 
-    :type payload: dict[str :
-    :param Any]: 
-    :param payload: 
-    :type payload: dict[str :
+    :param Any: param payload:
+    :param Any: param payload:
+    :param payload: dict[str:
     :param payload: dict[str: 
+    :param Any]: 
 
-    
     """
     symbol_a = payload.get("symbol_a")
     symbol_b = payload.get("symbol_b")

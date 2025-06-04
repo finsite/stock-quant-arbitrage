@@ -26,7 +26,6 @@ def main() -> None:
     and publishes signals when opportunities are found.
 
 
-    
     """
     logger.info("🚀 Starting Arbitrage Detection Service...")
     consume_messages()
