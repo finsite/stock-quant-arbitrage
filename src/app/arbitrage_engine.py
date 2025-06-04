@@ -16,7 +16,7 @@ logger = setup_logger(__name__)
 def run_arbitrage_analysis(payload: dict[str, Any]) -> dict[str, Any] | None:
     """Core arbitrage detection logic. Takes a message payload (market data),
     applies detection logic, and returns a signal if an opportunity is found.
-    
+
     Args:
     ----
         payload (dict): Market data payload containing symbol, timestamp, price, etc.
@@ -29,9 +29,9 @@ def run_arbitrage_analysis(payload: dict[str, Any]) -> dict[str, Any] | None:
     :param payload: dict[str:
     :param payload: dict[str:
     :param Any: param payload: dict[str:
-    :param Any: 
-    :param payload: dict[str: 
-    :param Any]: 
+    :param Any:
+    :param payload: dict[str:
+    :param Any]:
 
     """
     symbol_a = payload.get("symbol_a")
