@@ -25,10 +25,11 @@ def run_arbitrage_analysis(payload: dict[str, Any]) -> dict[str, Any] | None:
     -------
         dict or None: Arbitrage signal payload, or None if no opportunity found.
 
+    :param payload: dict[str:
+    :param Any: 
     :param payload: dict[str: 
     :param Any]: 
 
-    
     """
     symbol_a = payload.get("symbol_a")
     symbol_b = payload.get("symbol_b")
