@@ -24,8 +24,6 @@ def main() -> None:
     This service listens to incoming market data from RabbitMQ or SQS,
     performs statistical or price-based arbitrage detection,
     and publishes signals when opportunities are found.
-
-
     """
     logger.info("🚀 Starting Arbitrage Detection Service...")
     consume_messages()

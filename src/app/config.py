@@ -148,3 +148,17 @@ def get_sqs_queue_url() -> str:
 def get_sqs_region() -> str:
     """AWS region of the SQS queue."""
     return get_config_value("SQS_REGION", "us-east-1")
+
+# ------------------------------------------------------------------------------
+# 📦 Arbitrage engine specific configuration itmes
+# ------------------------------------------------------------------------------
+
+
+def get_lookback_period() -> int:
+    """Number of data points to look back for arbitrage analysis."""
+    return int(get_config_value("LOOKBACK_PERIOD", "20"))
+
+
+def get_spread_threshold() -> float:
+    """Minimum average price spread to trigger an arbitrage signal."""
+    return float(get_config_value("SPREAD_THRESHOLD", "0.5"))

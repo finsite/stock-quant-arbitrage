@@ -14,30 +14,25 @@ logger = setup_logger(__name__)
 
 
 def run_arbitrage_analysis(payload: dict[str, Any]) -> dict[str, Any] | None:
-    """Core arbitrage detection logic. Takes a message payload (market data),
-    applies detection logic, and returns a signal if an opportunity is found.
+    """Detect arbitrage opportunities between two correlated instruments.
+
+    Takes a payload containing price history for two symbols, calculates
+    the spread between them over a lookback window, and compares the average
+    spread to a threshold. If the spread exceeds the threshold, a signal is emitted.
 
     Args:
     ----
-        payload (dict): Market data payload containing symbol, timestamp, price, etc.
+        payload (dict[str, Any]): Market data including 'symbol_a', 'symbol_b',
+            'prices_a', 'prices_b', and 'timestamp'.
 
-    :param payload: dict[str:
-    :param Any: param payload: dict[str:
-    :param Any: param payload: dict[str:
-    :param Any: param payload:
-    :param Any: param payload:
-    :param payload: dict[str:
-    :param payload: dict[str:
-    :param Any: param payload: dict[str:
-    :param Any:
-    :param payload: dict[str:
-    :param Any]:
-
+    Returns:
+    -------
+        dict[str, Any] | None: A signal dictionary if an opportunity is found, or None.
     """
     symbol_a = payload.get("symbol_a")
     symbol_b = payload.get("symbol_b")
-    prices_a = payload.get("prices_a")  # List[float]
-    prices_b = payload.get("prices_b")  # List[float]
+    prices_a = payload.get("prices_a")  # Expected: list of floats
+    prices_b = payload.get("prices_b")  # Expected: list of floats
 
     if not prices_a or not prices_b:
         logger.warning("❌ Invalid payload, missing price data.")
@@ -54,7 +49,7 @@ def run_arbitrage_analysis(payload: dict[str, Any]) -> dict[str, Any] | None:
         logger.warning("⚠️ Price lists have different lengths.")
         return None
 
-    # Simple spread calculation
+    # Calculate absolute spread between price series
     spread = [abs(a - b) for a, b in zip(prices_a, prices_b)]
     avg_spread = sum(spread) / len(spread)
 

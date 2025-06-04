@@ -10,24 +10,17 @@ def setup_logger(name: str = "app") -> logging.Logger:
     with the format:
         "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
-    The default log level is controlled via the LOG_LEVEL environment variable.
+    The log level and format are controlled via environment variables:
+        - LOG_LEVEL: DEBUG, INFO, WARNING, ERROR, CRITICAL (default: INFO)
+        - LOG_FORMAT: "json" for structured logging, anything else for plain text
 
     Args:
     ----
         name (str): The name of the logger. Defaults to "app".
 
-    :param name: str:  (Default value = "app")
-    :param name: str:  (Default value = "app")
-    :param name: str:  (Default value = "app")
-    :param name: Default value = "app")
-    :type name: str :
-    :param name: Default value = "app")
-    :type name: str :
-    :param name: str:  (Default value = "app")
-    :param name: str:  (Default value = "app")
-    :param name: str:  (Default value = "app")
-    :param name: str:  (Default value = "app")
-
+    Returns:
+    -------
+        logging.Logger: Configured logger instance.
     """
     logger: logging.Logger = logging.getLogger(name)
 
