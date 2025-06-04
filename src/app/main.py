@@ -20,11 +20,16 @@ logger = setup_logger(__name__)
 
 def main() -> None:
     """Starts the arbitrage detection service.
-    
+
     This service listens to incoming market data from RabbitMQ or SQS,
     performs statistical or price-based arbitrage detection,
     and publishes signals when opportunities are found.
 
+    Parameters
+    ----------
+
+    Returns
+    -------
 
     """
     logger.info("🚀 Starting Arbitrage Detection Service...")
