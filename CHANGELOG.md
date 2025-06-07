@@ -1,11 +1,4 @@
-# Changelog
-
-## [0.0.0] - 2025-05-08
-
-### Added
-
-- Initial project structure cloned from template_python
-- Custom configuration and module setup for `stock-quant-arbitrage`
+## Unreleased
 
 ## v0.3.1 (2025-06-05)
 
@@ -44,11 +37,13 @@
 
 ## v0.2.1 (2025-06-03)
 
+## v0.2.0 (2025-05-23)
+
 ### Fix
 
 - **files**: Cleanup redundant files and standardize
 
-## v0.2.0 (2025-05-23)
+## v0.1.0 (2025-05-19)
 
 ### Feat
 
@@ -58,13 +53,11 @@
 
 - **poller**: integrate updates
 
-## v0.1.0 (2025-05-19)
+## v0.0.1 (2025-05-19)
 
 ### Feat
 
 - **processor**: verify poller functionality
-
-## v0.0.1 (2025-05-19)
 
 ### Fix
 
