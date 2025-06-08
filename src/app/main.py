@@ -1,8 +1,7 @@
-"""Main entry point for the stock-quant-arbitrage module.
+"""Main entry point for the service.
 
-This script initializes the arbitrage detection service,
-sets up logging, and begins consuming market data from the
-configured message queue for arbitrage signal generation.
+This script initializes logging, loads the queue consumer,
+and begins consuming data using the configured processing callback.
 """
 
 import os
@@ -13,20 +12,21 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 
 from app.utils.setup_logger import setup_logger
 from app.queue_handler import consume_messages
+from app.output_handler import send_to_output
 
-# Initialize logger
+# Initialize the module-level logger
 logger = setup_logger(__name__)
 
 
 def main() -> None:
-    """Starts the arbitrage detection service.
+    """Starts the data processing service.
 
-    This service listens to incoming market data from RabbitMQ or SQS,
-    performs statistical or price-based arbitrage detection,
-    and publishes signals when opportunities are found.
+    This function initializes the service by calling the queue consumer,
+    which will begin listening to RabbitMQ or SQS and processing data
+    using the `send_to_output` callback.
     """
-    logger.info("🚀 Starting Arbitrage Detection Service...")
-    consume_messages()
+    logger.info("🚀 Starting processing service...")
+    consume_messages(send_to_output)
 
 
 if __name__ == "__main__":
