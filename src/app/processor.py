@@ -6,7 +6,7 @@ Consumes market data payloads and applies arbitrage detection logic.
 from typing import Any
 
 from app.arbitrage_engine import run_arbitrage_analysis
-from app.logger import setup_logger
+from app.utils.setup_logger import setup_logger
 
 logger = setup_logger(__name__)
 

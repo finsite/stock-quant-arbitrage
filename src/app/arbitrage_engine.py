@@ -8,7 +8,7 @@ mean reversion, or statistical models to trigger a signal.
 from typing import Any
 
 from app.config import get_lookback_period, get_spread_threshold
-from app.logger import setup_logger
+from app.utils.setup_logger import setup_logger
 
 logger = setup_logger(__name__)
 
