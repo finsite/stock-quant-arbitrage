@@ -28,6 +28,7 @@ def run_arbitrage_analysis(payload: dict[str, Any]) -> dict[str, Any] | None:
     Returns:
     -------
         dict[str, Any] | None: A signal dictionary if an opportunity is found, or None.
+
     """
     symbol_a = payload.get("symbol_a")
     symbol_b = payload.get("symbol_b")

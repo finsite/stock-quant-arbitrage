@@ -19,6 +19,7 @@ def process_payload(payload: dict[str, Any]) -> dict[str, Any] | None:
 
     Returns:
         dict[str, Any] | None: Signal if arbitrage found, else None.
+
     """
     logger.debug("🧮 Processing arbitrage payload...")
     return run_arbitrage_analysis(payload)
