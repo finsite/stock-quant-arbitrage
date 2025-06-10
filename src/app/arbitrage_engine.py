@@ -57,9 +57,7 @@ def run_arbitrage_analysis(payload: dict[str, Any]) -> dict[str, Any] | None:
     logger.debug(f"🔎 Avg spread: {avg_spread:.4f} | Threshold: {spread_threshold:.4f}")
 
     if avg_spread >= spread_threshold:
-        logger.info(
-            f"✅ Arbitrage opportunity detected between {symbol_a} and {symbol_b}"
-        )
+        logger.info(f"✅ Arbitrage opportunity detected between {symbol_a} and {symbol_b}")
         return {
             "type": "arbitrage_signal",
             "symbol_a": symbol_a,
