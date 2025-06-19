@@ -48,7 +48,7 @@ scipy==1.15.3
     # via -r requirements.in
 six==1.17.0
     # via python-dateutil
-urllib3==2.4.0
+urllib3==2.5.0
     # via
     #   botocore
     #   requests
