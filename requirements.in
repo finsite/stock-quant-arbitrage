@@ -13,3 +13,7 @@ python-dotenv>=1.0.0          # Included across repos, even if .env isn't used
 # Vault Client (if applicable)
 hvac>=1.0.0,<2.0.0            # Only if your VaultClient uses hvac
 prometheus_client>=0.17.1
+
+# Security: Fix pip-audit vulnerabilities
+requests>=2.32.4
+urllib3>=2.5.0
