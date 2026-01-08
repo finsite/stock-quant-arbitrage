@@ -52,7 +52,7 @@ six==1.17.0
     # via python-dateutil
 tenacity==8.5.0
     # via -r requirements.in
-urllib3==2.5.0
+urllib3==2.6.3
     # via
     #   -r requirements.in
     #   botocore

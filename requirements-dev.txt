@@ -357,7 +357,7 @@ typing-inspection==0.4.1
     # via
     #   pydantic
     #   pydantic-settings
-urllib3==2.5.0
+urllib3==2.6.3
     # via
     #   -r D:\git\stock-quant-arbitrage\requirements.in
     #   -r requirements-dev.in
