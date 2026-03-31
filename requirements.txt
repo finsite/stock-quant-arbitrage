@@ -40,7 +40,7 @@ python-dateutil==2.9.0.post0
     # via botocore
 python-dotenv==1.1.1
     # via -r requirements.in
-requests==2.32.4
+requests==2.33.0
     # via
     #   -r requirements.in
     #   hvac
