@@ -240,7 +240,7 @@ pymdown-extensions==10.16
     # via mkdocs-material
 pyproject-hooks==1.2.0
     # via build
-pytest==8.3.5
+pytest==9.0.3
     # via
     #   -r requirements-dev.in
     #   pytest-benchmark
