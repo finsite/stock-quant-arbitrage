@@ -236,7 +236,7 @@ pyhcl==0.4.5
     # via hvac
 pylint==3.3.6
     # via -r requirements-dev.in
-pymdown-extensions==10.16
+pymdown-extensions==10.21.3
     # via mkdocs-material
 pyproject-hooks==1.2.0
     # via build
