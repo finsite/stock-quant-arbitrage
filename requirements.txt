@@ -4,15 +4,15 @@
 #
 #    pip-compile requirements.in
 #
-boto3==1.39.14
+boto3==1.43.24
     # via -r requirements.in
-botocore==1.39.14
+botocore==1.43.24
     # via
     #   boto3
     #   s3transfer
-certifi==2025.7.14
+certifi==2025.11.12
     # via requests
-charset-normalizer==3.4.2
+charset-normalizer==3.4.7
     # via requests
 colorama==0.4.6
     # via loguru
@@ -20,7 +20,7 @@ hvac==1.2.1
     # via -r requirements.in
 idna==3.10
     # via requests
-jmespath==1.0.1
+jmespath==1.1.0
     # via
     #   boto3
     #   botocore
@@ -30,9 +30,9 @@ numpy==1.26.4
     # via
     #   -r requirements.in
     #   scipy
-pika==1.3.2
+pika==1.4.1
     # via -r requirements.in
-prometheus-client==0.22.1
+prometheus-client==0.25.0
     # via -r requirements.in
 pyhcl==0.4.5
     # via hvac
@@ -44,9 +44,9 @@ requests==2.32.4
     # via
     #   -r requirements.in
     #   hvac
-s3transfer==0.13.1
+s3transfer==0.18.0
     # via boto3
-scipy==1.16.0
+scipy==1.17.1
     # via -r requirements.in
 six==1.17.0
     # via python-dateutil
